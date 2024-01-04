@@ -15,7 +15,7 @@ public class BookRequestDTO {
         private String author;
         private String description;
         private Long page;
-        private Integer like;
+        private Integer likes;
         private BookStatus status;
         private String expireAt;
         private String startAt;

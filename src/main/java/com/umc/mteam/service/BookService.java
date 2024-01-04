@@ -12,6 +12,8 @@ import com.umc.mteam.web.dto.BookResponseDTO;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.Random;
+
 @Service
 @RequiredArgsConstructor
 public class BookService {
@@ -28,5 +30,13 @@ public class BookService {
         List<BookResponseDTO.BookElementDTO> bookList = bookRepository.getBooksListByUserId(userId).stream().map(x -> BookConverter.toBookElementDTO(x)).toList();
 
         return bookList;
-    } 
+    }
+
+        public BookResponseDTO.BookElementDTO getRandomBookByUserId(Long userId) {
+        List<BookResponseDTO.BookElementDTO> bookList = bookRepository.getBooksListByUserId(userId).stream().map(x -> BookConverter.toBookElementDTO(x)).toList();
+
+        if(bookList.isEmpty()) return null;
+
+        return bookList.get(new Random().nextInt(bookList.size()));
+    }
 }

@@ -11,6 +11,7 @@ import com.umc.mteam.ApiPayload.ApiResponse;
 import com.umc.mteam.service.BookService;
 import com.umc.mteam.web.dto.BookRequestDTO;
 import com.umc.mteam.web.dto.BookResponseDTO;
+import com.umc.mteam.web.dto.BookResponseDTO.BookElementDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -39,5 +40,13 @@ public class BookController {
         List<BookResponseDTO.BookElementDTO> resultDTO = bookService.getBooksByUserId(userId);
         return ApiResponse.onSuccess(resultDTO);
     }
-    
+
+
+    @GetMapping("/random")
+    public ApiResponse<BookResponseDTO.BookElementDTO> getRandomBook(@RequestParam("user_id") Long userId) {
+        BookResponseDTO.BookElementDTO randomBook = bookService.getRandomBookByUserId(userId);
+        if(randomBook == null) return ApiResponse.onFailure("4004", "사용자의 책 목록이 없습니다.", BookElementDTO.builder().build());
+
+        return ApiResponse.onSuccess(randomBook);
+    }    
 }

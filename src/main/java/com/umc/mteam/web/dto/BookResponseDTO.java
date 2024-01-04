@@ -2,10 +2,8 @@ package com.umc.mteam.web.dto;
 
 import java.time.LocalDateTime;
 
-import com.umc.mteam.domain.Book;
 import com.umc.mteam.domain.enums.BookStatus;
 
-import java.util.List;
 
 import lombok.Builder;
 import lombok.Getter;
