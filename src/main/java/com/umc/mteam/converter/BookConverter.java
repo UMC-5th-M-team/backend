@@ -19,6 +19,7 @@ public class BookConverter {
         .book_publisher(book.getBookPublisher())
         .description(book.getDescription())
         .page(book.getPage())
+        .image_url(book.getImageUrl())
         .expire_at(book.getExpireAt())
         .start_at(book.getStartAt())
         .status(book.getStatus())

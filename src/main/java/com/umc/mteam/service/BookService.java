@@ -19,21 +19,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
-
-    @Autowired
-    private S3Uploader s3Uploader;
+    private final S3Uploader s3Uploader;
 
     public BookResponseDTO.EnrollResultDTO enrollBook(BookRequestDTO.EnRollDTO bookRequest) throws IOException {
 
-            if(!bookRequest.getImage().isEmpty()) {
+        if(!bookRequest.getImage().isEmpty()) {
             String storedFileName = s3Uploader.upload(bookRequest.getImage(),"images");
             bookRequest.setImageUrl(storedFileName);
         }
-
+        
         Book book = BookConverter.toBook(bookRequest);
+
         bookRepository.save(book);
-
-
 
         return BookConverter.toEnrollResultDTO(book);
     }
