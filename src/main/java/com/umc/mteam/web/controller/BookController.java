@@ -1,11 +1,9 @@
 package com.umc.mteam.web.controller;
 
 // import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.umc.mteam.service.SearchService;
+import com.umc.mteam.web.dto.SearchDTO;
+import org.springframework.web.bind.annotation.*;
 
 import com.umc.mteam.ApiPayload.ApiResponse;
 import com.umc.mteam.service.BookService;
@@ -17,8 +15,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +22,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BookController {
     private final BookService bookService;
 
+    private final SearchService searchService;
+
+    @GetMapping("/home/{bookName}")
+    public ApiResponse<SearchDTO.BookListDTO> searchBook(@PathVariable(name = "bookName") String bookName) {
+
+        SearchDTO.BookListDTO bookList = searchService.searchBook(bookName);
+
+
+        return ApiResponse.onSuccess(bookList);
+    }
     @PostMapping("/home")
     public ApiResponse<BookResponseDTO.EnrollResultDTO> enrollBook(
         @RequestBody BookRequestDTO.EnRollDTO enRollDTO, @RequestParam("user_id") Long userId
@@ -48,5 +54,5 @@ public class BookController {
         if(randomBook == null) return ApiResponse.onFailure("4004", "사용자의 책 목록이 없습니다.", BookElementDTO.builder().build());
 
         return ApiResponse.onSuccess(randomBook);
-    }    
+    }
 }
