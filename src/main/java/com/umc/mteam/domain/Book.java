@@ -44,15 +44,17 @@ public class Book extends BaseEntity {
 
     private String review;
 
-    private Integer like;
+    private Integer likes;
 
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false, columnDefinition = "VARCHAR(10) DEFAULT 'SCHEDULED'")
     private BookStatus status;
 
     @Column(nullable = false)
-    private LocalDate start_at;
+    // private LocalDate start_at;
+    private String start_at;
     
     @Column(nullable = false)
-    private LocalDate expire_at;
+    // private LocalDate expire_at;
+    private String expire_at;
 }

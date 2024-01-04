@@ -17,7 +17,7 @@ public class BookRequestDTO {
         private Long page;
         private Integer like;
         private BookStatus status;
-        private LocalDate expireAt;
-        private LocalDate startAt;
+        private String expireAt;
+        private String startAt;
     }
 }

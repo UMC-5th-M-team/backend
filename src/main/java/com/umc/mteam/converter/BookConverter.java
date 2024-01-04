@@ -21,6 +21,7 @@ public class BookConverter {
         .page(book.getPage())
         .expire_at(book.getExpireAt())
         .start_at(book.getStartAt())
+        .status(book.getStatus())
         .build();
     }
 }

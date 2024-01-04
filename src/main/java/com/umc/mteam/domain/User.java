@@ -32,7 +32,4 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserGoal> userGoalList;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<BookGoal> bookGoalList;
 }
