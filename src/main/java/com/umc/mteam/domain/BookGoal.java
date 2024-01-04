@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import com.umc.mteam.domain.enums.BookStatus;
 import com.umc.mteam.domain.enums.Status;
 
 import java.time.LocalDateTime;
@@ -23,9 +24,9 @@ public class BookGoal {
 
     private LocalDateTime expireAt;
 
-    @Column(columnDefinition = "VARCHAR(10) DEFAULT 'ACTIVE'")
+    @Column(columnDefinition = "VARCHAR(10) DEFAULT 'SCHEDULED'")
     @Enumerated(value = EnumType.STRING)
-    private Status status;
+    private BookStatus status;
 
     private String review;
 
