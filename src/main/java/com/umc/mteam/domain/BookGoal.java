@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 
 import com.umc.mteam.domain.enums.BookStatus;
-import com.umc.mteam.domain.enums.Status;
 
 import java.time.LocalDateTime;
 
