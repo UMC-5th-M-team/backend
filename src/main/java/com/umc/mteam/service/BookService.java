@@ -17,9 +17,8 @@ public class BookService {
 
     public BookResponseDTO.EnrollResultDTO enrollBook(BookRequestDTO.EnRollDTO bookRequest) {
         Book book = BookConverter.toBook(bookRequest);
-        //BOok-> ResultDTO.id
-        // id, request.start_at ->service -> BookGoal Repo -> BookGoal_id 
+        bookRepository.save(book);
 
-        return bookRepository.save(book);
+        return BookConverter.toEnrollResultDTO(book);
     }
 }

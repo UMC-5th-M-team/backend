@@ -6,8 +6,7 @@ import com.umc.mteam.domain.enums.BookStatus;
 
 import lombok.Getter;
 
-public  class BookRequestDTO {
-
+public class BookRequestDTO {
     @Getter
     public static class EnRollDTO {
         private String bookName;
