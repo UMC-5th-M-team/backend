@@ -14,6 +14,10 @@ import com.umc.mteam.web.dto.BookResponseDTO;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -27,6 +31,13 @@ public class BookController {
         ) {
             BookResponseDTO.EnrollResultDTO resultDTO = bookService.enrollBook(enRollDTO);
             return ApiResponse.onSuccess(resultDTO);
+    }
+
+
+    @GetMapping("/")
+    public ApiResponse<List<BookResponseDTO.BookElementDTO>> getBookList(@RequestParam("user_id") Long userId) {
+        List<BookResponseDTO.BookElementDTO> resultDTO = bookService.getBooksByUserId(userId);
+        return ApiResponse.onSuccess(resultDTO);
     }
     
 }

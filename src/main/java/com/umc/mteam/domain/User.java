@@ -30,6 +30,9 @@ public class User extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private Status status;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Book> bookList;
+    
+    @OneToMany(cascade = CascadeType.ALL)
     private List<UserGoal> userGoalList;
 }

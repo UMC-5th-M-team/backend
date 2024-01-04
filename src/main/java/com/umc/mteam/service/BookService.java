@@ -1,5 +1,7 @@
 package com.umc.mteam.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.umc.mteam.converter.BookConverter;
@@ -21,4 +23,10 @@ public class BookService {
 
         return BookConverter.toEnrollResultDTO(book);
     }
+
+    public List<BookResponseDTO.BookElementDTO> getBooksByUserId(Long userId) {
+        List<BookResponseDTO.BookElementDTO> bookList = bookRepository.getBooksListByUserId(userId).stream().map(x -> BookConverter.toBookElementDTO(x)).toList();
+
+        return bookList;
+    } 
 }
