@@ -2,12 +2,16 @@ package com.umc.mteam.web.dto;
 
 import java.time.LocalDate;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.umc.mteam.domain.enums.BookStatus;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public class BookRequestDTO {
     @Getter
+    @Setter
     public static class EnRollDTO {
         private String bookName;
         private String imageUrl;
@@ -19,5 +23,6 @@ public class BookRequestDTO {
         private BookStatus status;
         private String expireAt;
         private String startAt;
+        private MultipartFile image;
     }
 }

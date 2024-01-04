@@ -17,3 +17,16 @@ spring:
         hbm2ddl:
           auto: create
         default_batch_fetch_size: 1000
+
+cloud:
+  aws:
+    s3:
+      bucket: umc-hackerton
+    credentials:
+      access-key: AKIAZHNUXZ4BVAMP3QJZ
+      secret-key: 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
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false
