@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import com.umc.mteam.domain.common.BaseEntity;
 import com.umc.mteam.domain.enums.Status;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
