@@ -32,4 +32,5 @@ public class BookController {
             BookResponseDTO.EnrollResultDTO resultDTO = bookService.enrollBook(enRollDTO);
             return ApiResponse.onSuccess(resultDTO);
     }
+    
 }

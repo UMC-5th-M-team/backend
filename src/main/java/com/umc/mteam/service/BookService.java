@@ -1,5 +1,4 @@
 package com.umc.mteam.service;
-
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,10 @@ import com.umc.mteam.repository.BookRepository;
 import com.umc.mteam.web.dto.BookRequestDTO;
 import com.umc.mteam.web.dto.BookResponseDTO;
 import lombok.RequiredArgsConstructor;
-import com.umc.mteam.config.*;;
+import com.umc.mteam.config.*;
+
+import java.util.Random;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -34,5 +36,19 @@ public class BookService {
 
 
         return BookConverter.toEnrollResultDTO(book);
+    }
+
+    public List<BookResponseDTO.BookElementDTO> getBooksByUserId(Long userId) {
+        List<BookResponseDTO.BookElementDTO> bookList = bookRepository.getBooksListByUserId(userId).stream().map(x -> BookConverter.toBookElementDTO(x)).toList();
+
+        return bookList;
+    }
+
+        public BookResponseDTO.BookElementDTO getRandomBookByUserId(Long userId) {
+        List<BookResponseDTO.BookElementDTO> bookList = bookRepository.getBooksListByUserId(userId).stream().map(x -> BookConverter.toBookElementDTO(x)).toList();
+
+        if(bookList.isEmpty()) return null;
+
+        return bookList.get(new Random().nextInt(bookList.size()));
     }
 }

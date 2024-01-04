@@ -8,9 +8,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.umc.mteam.domain.common.BaseEntity;
 import com.umc.mteam.domain.enums.BookStatus;
@@ -57,4 +60,8 @@ public class Book extends BaseEntity {
     @Column(nullable = false)
     // private LocalDate expire_at;
     private String expire_at;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 }

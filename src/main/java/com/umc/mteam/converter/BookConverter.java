@@ -24,4 +24,15 @@ public class BookConverter {
         .status(book.getStatus())
         .build();
     }
+
+    // book -> bookElementDTO
+    public static BookResponseDTO.BookElementDTO toBookElementDTO(Book book) {
+        return BookResponseDTO.BookElementDTO.builder()
+        .author(book.getAuthor())
+        .description(book.getDescription())
+        .expire_at(book.getExpire_at())
+        .status(book.getStatus())
+        .title(book.getBookName())
+        .build();
+    }
 }
